@@ -19,17 +19,17 @@
     <string name="reportEmergenza">Report emergenza</string>
     <string name="codiceCapoSquadra">Codice capo squadra</string>
     <string name="aggiungiMedia">Aggiungi media</string>
-    <string name="squadraIntervento">Squadra d'intervento</string>
+    <string name="squadraIntervento">Squadra d intervento</string>
     <string name="primaPartenza">Prima partenza</string>
     <string name="secondaPartenza">Seconda partenza</string>
     <string name="supporto">Supporto</string>
     <string name="rincalzo">Rincalzo</string>
-    <string name="forzeOrdineIntervenute">Forze dell'ordine intervenute</string>
+    <string name="forzeOrdineIntervenute">Forze dell ordine intervenute</string>
     <string name="poliziaReport">Polizia</string>
     <string name="forestaleReport">Forestale</string>
     <string name="carabienieriReport">Carabinieri</string>
     <string name="ambulanzaReport">Ambulanza</string>
     <string name="feriti">Feriti</string>
     <string name="deceduti">Deceduti</string>
-    <string name="descrizioneIntervento">descrizione intervento</string>
+    <string name="descrizioneIntervento">Descrizione intervento</string>
 </resources>

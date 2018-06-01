@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">OnTheRoad</string>
+
+    <string name="rinforzi">Rinforzi</string>
+    <string name="polizia">113</string>
+    <string name="forestale">1515</string>
+    <string name="carabienieri">112</string>
+    <string name="ambulanza">118</string>
+    <string name="richiediRinforzi">Richiedi rinforzi</string>
+    <string name="datiEmergenza">Dati emergenza</string>
+    <string name="nomeSegnalatore">Nome segnalatore</string>
+    <string name="cognomeSegnalatore">Cognome segnalatore</string>
+    <string name="indirizzoEmergenza">Indirizzo emergenza</string>
+    <string name="provincia">Provincia</string>
+    <string name="tipoEmergenza">Tipo emergenza</string>
+    <string name="gradoEmergenza">Grado emergenza</string>
+    <string name="informazioniAggiuntive">Informazioni aggiuntive</string>
+    <string name="ricezioneSegnalazione">Ricezione segnalazione</string>
+    <string name="reportEmergenza">Report emergenza</string>
+    <string name="codiceCapoSquadra">Codice capo squadra</string>
+    <string name="aggiungiMedia">Aggiungi media</string>
+    <string name="squadraIntervento">Squadra d'intervento</string>
+    <string name="primaPartenza">Prima partenza</string>
+    <string name="secondaPartenza">Seconda partenza</string>
+    <string name="supporto">Supporto</string>
+    <string name="rincalzo">Rincalzo</string>
+    <string name="forzeOrdineIntervenute">Forze dell'ordine intervenute</string>
+    <string name="poliziaReport">Polizia</string>
+    <string name="forestaleReport">Forestale</string>
+    <string name="carabienieriReport">Carabinieri</string>
+    <string name="ambulanzaReport">Ambulanza</string>
+    <string name="feriti">Feriti</string>
+    <string name="deceduti">Deceduti</string>
+    <string name="descrizioneIntervento">descrizione intervento</string>
 </resources>

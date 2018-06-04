@@ -24,7 +24,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/codiceCapoSquadra"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
 
                 <EditText
                     android:id="@+id/codiceCaposquadra"
@@ -36,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/datiEmergenza"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
 
             <LinearLayout
                 android:id="@+id/linearEmergenzaRep"
@@ -125,7 +127,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/aggiungiMedia"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"/>
 
             <LinearLayout
                 android:id="@+id/relativeAggiungiMedia"
@@ -162,7 +165,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/squadraIntervento"
                         android:textStyle="bold"
-                        android:layout_marginTop="20dp"/>
+                        android:layout_marginTop="20dp"
+                        android:textColor="@android:color/black"/>
 
                     <CheckBox
                         android:id="@+id/checkPrimaPartenza"

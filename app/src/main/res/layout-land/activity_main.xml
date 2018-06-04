@@ -22,10 +22,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/richiediRinforzi"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
 
             <LinearLayout
-                android:id="@+id/linearParent"
+                android:id="@+id/linearRinforzi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -78,7 +79,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/datiEmergenza"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="50dp"
+                android:textColor="@android:color/black"/>
 
             <LinearLayout
                 android:id="@+id/linearEmergenza"
@@ -119,7 +121,7 @@
                         android:text="@string/tipoEmergenza"/>
 
                     <TextView
-                        android:id="@+id/tipoEmergenzaaTxt"
+                        android:id="@+id/tipoEmergenzaTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -167,7 +169,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/informazioniAggiuntive"
                 android:textStyle="bold"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/informazioniAggiuntiveTxt"

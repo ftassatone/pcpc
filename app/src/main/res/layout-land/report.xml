@@ -38,14 +38,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/datiEmergenza"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/margineMaxTop"/>
 
             <LinearLayout
                 android:id="@+id/linearEmergenzaRep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="@dimen/minimoMargineTop">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -56,32 +57,60 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nomeSegnalatore"/>
+                        android:text="@string/nomeSegnalatore"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/nomeSegnalatoreRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/indirizzoEmergenza"/>
+                        android:text="@string/indirizzoEmergenza"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/indirizzoEmergenzaRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tipoEmergenza"/>
+                        android:text="@string/tipoEmergenza"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/tipoEmergenzaaRep"
+                        android:id="@+id/tipoEmergenzaRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descrizioneIntervento"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
+
+                    <TextView
+                        android:id="@+id/descrizioneEmergenzaRep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:layout_marginBottom="@dimen/margineBottom"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -93,32 +122,44 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cognomeSegnalatore"/>
+                        android:text="@string/cognomeSegnalatore"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/cognomeSegnalatoreRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/provincia"/>
+                        android:text="@string/provincia"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/provinciaRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/gradoEmergenza"/>
+                        android:text="@string/gradoEmergenza"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/gradoEmergenzaRep"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -127,22 +168,25 @@
                 android:layout_height="wrap_content"
                 android:text="@string/aggiungiMedia"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"/>
 
             <LinearLayout
-                android:id="@+id/relativeAggiungiMedia"
+                android:id="@+id/linearAggiungiMedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <FrameLayout
+                <LinearLayout
+                    android:id="@+id/linearImmagini"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                </FrameLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/btImmagini"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_camera"
@@ -165,8 +209,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/squadraIntervento"
                         android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@android:color/black"/>
+                        android:layout_marginTop="@dimen/margineMaxTop"
+                        android:textColor="@android:color/black" />
 
                     <CheckBox
                         android:id="@+id/checkPrimaPartenza"
@@ -202,8 +246,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/forzeOrdineIntervenute"/>
-
+                        android:text="@string/forzeOrdineIntervenute"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineMaxTop"/>
 
                     <CheckBox
                         android:id="@+id/checkPolizia"
@@ -236,34 +282,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="@dimen/margineTop">
 
                         <AutoCompleteTextView
                             android:id="@+id/numeroFeriitiTxt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/feriti"
-                            android:inputType="number"/>
+                            android:inputType="number" />
                     </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="@dimen/margineTop">
 
                         <AutoCompleteTextView
                             android:id="@+id/numeroDecedutiTxt"
@@ -272,13 +311,12 @@
                             android:hint="@string/deceduti"
                             android:inputType="number"/>
                     </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margineTop">
 
                 <AutoCompleteTextView
                     android:id="@+id/descrizioneIntervento"

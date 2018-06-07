@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_saveFile"
+        android:id="@+id/action_compilaReport"
         android:orderInCategory="100"
         android:title="compilaReport"
         android:icon="@android:drawable/ic_menu_edit"

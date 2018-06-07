@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/datiEmergenza"
                 android:textStyle="bold"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"/>
 
             <LinearLayout
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="@dimen/minimoMargineTop">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -98,32 +98,45 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nomeSegnalatore"/>
+                        android:text="@string/nomeSegnalatore"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/nomeSegnalatoreTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/indirizzoEmergenza"/>
+                        android:text="@string/indirizzoEmergenza"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/indirizzoEmergenzaTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tipoEmergenza"/>
+                        android:text="@string/tipoEmergenza"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/tipoEmergenzaTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:layout_marginBottom="@dimen/margineBottom"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,32 +148,45 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cognomeSegnalatore"/>
+                        android:text="@string/cognomeSegnalatore"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/cognomeSegnalatoreTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/provincia"/>
+                        android:text="@string/provincia"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/provinciaTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/gradoEmergenza"/>
+                        android:text="@string/gradoEmergenza"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"/>
 
                     <TextView
                         android:id="@+id/gradoEmergenzaTxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:layout_marginBottom="@dimen/margineBottom"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -169,13 +195,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/informazioniAggiuntive"
                 android:textStyle="bold"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/informazioniAggiuntiveTxt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

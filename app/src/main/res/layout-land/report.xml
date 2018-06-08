@@ -177,13 +177,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/linearImmagini"
+                <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-                </LinearLayout>
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:id="@+id/linearImmagini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    </LinearLayout>
+                </HorizontalScrollView>
 
                 <ImageButton
                     android:id="@+id/btImmagini"

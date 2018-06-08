@@ -23,6 +23,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -141,23 +142,31 @@ public class Report extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE){
             if(data!=null){
                 Uri contentURI = data.getData();
-                Log.d("MIO", "URI "+data.getData());
                 try{
                     if(contentURI==null){
                         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
                         String path = saveImage(bitmap);
-                        Log.d("MIO", "path "+path);
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setImageBitmap(bitmap);
+                        FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
+                        frameLayout.setLayoutParams(layoutParams1);
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+                        imageView.setLayoutParams(layoutParams);
                         linearImmagini.addView(imageView);
+                        linearImmagini.addView(frameLayout);
                     }else{
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),contentURI);
-                        Log.d("MIO", "bitmap "+bitmap);
                         String path = saveImage(bitmap);
-                        Log.d("MIO", "path "+path);
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setImageBitmap(bitmap);
+                        FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
+                        frameLayout.setLayoutParams(layoutParams1);
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+                        imageView.setLayoutParams(layoutParams);
                         linearImmagini.addView(imageView);
+                        linearImmagini.addView(frameLayout);
                     }
 
                 }catch (IOException e){
@@ -168,7 +177,13 @@ public class Report extends AppCompatActivity {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(thumbnail);
+            FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+            LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
+            frameLayout.setLayoutParams(layoutParams1);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+            imageView.setLayoutParams(layoutParams);
             linearImmagini.addView(imageView);
+            linearImmagini.addView(frameLayout);
         }
     }
 

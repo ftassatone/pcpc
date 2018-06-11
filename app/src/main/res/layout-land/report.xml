@@ -216,29 +216,77 @@
                         android:layout_marginTop="@dimen/margineMaxTop"
                         android:textColor="@android:color/black" />
 
-                    <CheckBox
-                        android:id="@+id/checkPrimaPartenza"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/primaPartenza"/>
+                        android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkSecondaPartenza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/secondaPartenza"/>
+                        <CheckBox
+                            android:id="@+id/checkPrimaPartenza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/primaPartenza"/>
+                        
+                        <TextView
+                            android:id="@+id/orarioPrimaPartenzaTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
-                    <CheckBox
-                        android:id="@+id/checkSupporto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/supporto"/>
+                    </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/checkRincalzo"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/rincalzo"/>
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkSecondaPartenza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/secondaPartenza"/>
+
+                        <TextView
+                            android:id="@+id/orarioSecondaPartenzaTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkSupporto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/supporto"/>
+
+                        <TextView
+                            android:id="@+id/orarioSupportoTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkRincalzo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rincalzo"/>
+
+                        <TextView
+                            android:id="@+id/orarioRincalzoTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -255,29 +303,80 @@
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/margineMaxTop"/>
 
-                    <CheckBox
-                        android:id="@+id/checkPolizia"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/poliziaReport"/>
+                        android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/checkForestale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/forestaleReport"/>
+                        <CheckBox
+                            android:id="@+id/checkPolizia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/poliziaReport"/>
 
-                    <CheckBox
-                        android:id="@+id/checkCarabinieri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/carabienieriReport"/>
+                        <TextView
+                            android:id="@+id/orarioPoliziaTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
-                    <CheckBox
-                        android:id="@+id/checkAmbulanza"
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ambulanzaReport"/>
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkForestale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/forestaleReport"/>
+
+                        <TextView
+                            android:id="@+id/orarioForestaleTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkCarabinieri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/carabienieriReport"/>
+
+                        <TextView
+                            android:id="@+id/orarioCarabinieriTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkAmbulanza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ambulanzaReport"/>
+
+                        <TextView
+                            android:id="@+id/orarioAmbulanzaTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -285,8 +384,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"

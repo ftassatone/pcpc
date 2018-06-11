@@ -2,14 +2,11 @@ package helpfire.ontheroad;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.ContentValues;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -18,38 +15,35 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.TimePicker;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-public class Report extends AppCompatActivity {
+public class Report extends AppCompatActivity{
 
     private LinearLayout linearEmergenzaRep, linearAggiungiMedia, linearImmagini;
     private TextView nomeSegnalatoreRep, indirizzoEmergenzaRep, tipoEmergenzaRep, cognomeSegnalatoreRep, provinciaRep, gradoEmergenzaRep,
-            descrizioneEmergenzaRep;
+            descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt;
     private ImageButton btImmagini;
-    private String mCurrentPhotoPath;
-    static final int REQUEST_TAKE_PHOTO = 1;
-    static final int ID_RICHIESTA_PERMISSION = 1;
-    static final int REQUEST_IMAGE_CAPTURE = 1 ;
+    private CheckBox checkPrimaPartenza, checkSecondaPartena, checkSupporto, checkRincalzo, checkPolizia, checkForestale,
+            checkCarabinieri, checkAmbulanza,check;
+    private static final int REQUEST_TAKE_PHOTO = 1;
+    private static final int ID_RICHIESTA_PERMISSION = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1 ;
+    private String ora;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -81,8 +75,58 @@ public class Report extends AppCompatActivity {
         provinciaRep = (TextView) findViewById(R.id.provinciaRep);
         gradoEmergenzaRep = (TextView) findViewById(R.id.gradoEmergenzaRep);
         descrizioneEmergenzaRep = (TextView) findViewById(R.id.descrizioneEmergenzaRep);
+        orarioPoliziaTxt = (TextView) findViewById(R.id.orarioPoliziaTxt);
+        orarioForestaleTxt = (TextView) findViewById(R.id.orarioForestaleTxt);
+        orarioCarabinieriTxt = (TextView) findViewById(R.id.orarioCarabinieriTxt);
+        orarioAmbulanzaTxt = (TextView) findViewById(R.id.orarioAmbulanzaTxt);
         btImmagini = (ImageButton) findViewById(R.id.btImmagini);
 
+        checkPrimaPartenza = (CheckBox) findViewById(R.id.checkPrimaPartenza);
+        checkSecondaPartena = (CheckBox) findViewById(R.id.checkSecondaPartenza);
+        checkSupporto = (CheckBox) findViewById(R.id.checkSupporto);
+        checkRincalzo = (CheckBox) findViewById(R.id.checkRincalzo);
+        checkPolizia = (CheckBox) findViewById(R.id.checkPolizia);
+        checkPolizia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkPolizia.isChecked()){
+                    inserisciOrario(view);
+                }else
+                    orarioPoliziaTxt.setText("");
+            }
+        });
+        checkForestale = (CheckBox) findViewById(R.id.checkForestale);
+        checkForestale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkForestale.isChecked()){
+                    inserisciOrario(view);
+                }else
+                    orarioForestaleTxt.setText("");
+
+            }
+        });
+        checkCarabinieri = (CheckBox) findViewById(R.id.checkCarabinieri);
+        checkCarabinieri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkCarabinieri.isChecked()){
+                    inserisciOrario(view);
+                }else
+                    orarioCarabinieriTxt.setText("");
+
+            }
+        });
+        checkAmbulanza = (CheckBox) findViewById(R.id.checkAmbulanza);
+        checkAmbulanza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkAmbulanza.isChecked()){
+                    inserisciOrario(view);
+                }else
+                    orarioAmbulanzaTxt.setText("");
+            }
+        });
 
         btImmagini.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +136,7 @@ public class Report extends AppCompatActivity {
         });
         popolaText();
     }
+
 
     public void popolaText(){
         Intent prendiDati = getIntent();
@@ -104,7 +149,7 @@ public class Report extends AppCompatActivity {
         descrizioneEmergenzaRep.setText(prendiDati.getExtras().getString("informazioni"));
     }
 
-
+    //creazione del dialog per la scelta tra galleria e fotocamera
     public void creaBuilder(){
         AlertDialog.Builder builder = new AlertDialog.Builder(Report.this);
         builder.setTitle("Choose Image Source");
@@ -119,10 +164,6 @@ public class Report extends AppCompatActivity {
                                 break;
                             case 1:
                                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                /*ContentValues values = new ContentValues();
-                                values.put(MediaStore.Images.Media.TITLE, "prova");
-                                Uri mImageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                                intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);*/
                                 startActivityForResult(intent,REQUEST_TAKE_PHOTO);
                                 break;
                             default:
@@ -133,6 +174,8 @@ public class Report extends AppCompatActivity {
         builder.show();
     }
 
+    //apertura della fotocamera,successivamente mostra la foto nell'activity nella sezione delle anteprime.
+    //selezione dell'immagine dalla galleria e anteprima nell'activity.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -187,6 +230,7 @@ public class Report extends AppCompatActivity {
         }
     }
 
+    //salvataggio della foto scattata nella directory
     public String saveImage(Bitmap myBitmap){
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         myBitmap.compress(Bitmap.CompressFormat.JPEG,90, bytes);
@@ -208,20 +252,31 @@ public class Report extends AppCompatActivity {
         return "";
     }
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File root = Environment.getExternalStorageDirectory();
-        File directory = new File(root.getAbsolutePath()+"/DCIM/OnTheRoad");
-        directory.mkdir();
-        Log.d("DANIELE","dir "+directory);
-        File image = File.createTempFile(imageFileName,".jpg",directory);
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        Log.d("DANIELE"," mCurrentPhotoPath "+ mCurrentPhotoPath);
-        return image;
+    //metodo per inserire l'orario utilizzando il TimePickerDialog
+    public void inserisciOrario (View view){
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+        check = (CheckBox)view;
+        TimePickerDialog dialog = new TimePickerDialog(Report.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                ora = hourOfDay + ":" + minute;
+                switch (check.getText().toString()){
+                    case "Polizia": orarioPoliziaTxt.setText("Arrivo - "+ora);
+                        break;
+                    case "Forestale": orarioForestaleTxt.setText("Arrivo - "+ora);
+                        break;
+                    case "Carabinieri": orarioCarabinieriTxt.setText("Arrivo - "+ora);
+                        break;
+                    case "Ambulanza": orarioAmbulanzaTxt.setText("Arrivo - "+ora);
+                        break;
+                }
+            }
+        },hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
+        dialog.show();
     }
+
+    //creazione del dialog per l'inserimento dell'orario per le partenze e gli arrivi dei vvf
 
 }

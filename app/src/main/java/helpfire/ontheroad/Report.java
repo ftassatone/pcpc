@@ -259,6 +259,15 @@ public class Report extends AppCompatActivity{
                         frameLayout.setLayoutParams(layoutParams1);
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
                         imageView.setLayoutParams(layoutParams);
+                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View view) {
+                                ImageView img = (ImageView) view;
+                                Log.d("LOG", "img "+img);
+                                linearImmagini.removeView(img);
+                                return false;
+                            }
+                        });
                         linearImmagini.addView(imageView);
                         linearImmagini.addView(frameLayout);
                     }else{
@@ -271,6 +280,15 @@ public class Report extends AppCompatActivity{
                         frameLayout.setLayoutParams(layoutParams1);
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
                         imageView.setLayoutParams(layoutParams);
+                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View view) {
+                                ImageView img = (ImageView) view;
+                                Log.d("LOG", "img "+img);
+                                linearImmagini.removeView(img);
+                                return false;
+                            }
+                        });
                         linearImmagini.addView(imageView);
                         linearImmagini.addView(frameLayout);
                     }

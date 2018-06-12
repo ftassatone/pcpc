@@ -25,12 +25,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/codiceCapoSquadra"
                     android:textStyle="bold"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/textSizeTitolo"/>
 
                 <EditText
                     android:id="@+id/codiceCaposquadra"
                     android:layout_width="100dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSize"
+                    android:layout_marginLeft="@dimen/minimoMargineTop"/>
             </LinearLayout>
 
             <TextView
@@ -39,7 +42,8 @@
                 android:text="@string/datiEmergenza"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="@dimen/margineMaxTop"/>
+                android:layout_marginTop="@dimen/margineMaxTop"
+                android:textSize="@dimen/textSizeTitolo"/>
 
             <LinearLayout
                 android:id="@+id/linearEmergenzaRep"
@@ -60,13 +64,15 @@
                         android:text="@string/nomeSegnalatore"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/nomeSegnalatoreRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop"/>
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -74,13 +80,15 @@
                         android:text="@string/indirizzoEmergenza"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/indirizzoEmergenzaRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop"/>
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -88,13 +96,15 @@
                         android:text="@string/tipoEmergenza"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/tipoEmergenzaRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop" />
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -102,14 +112,16 @@
                         android:text="@string/descrizioneIntervento"
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
-                        android:layout_marginTop="@dimen/margineTop"/>
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/descrizioneEmergenzaRep"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/minimoMargineTop"
-                        android:layout_marginBottom="@dimen/margineBottom"/>
+                        android:layout_marginBottom="@dimen/margineBottom"
+                        android:textSize="@dimen/textSize"/>
 
                 </LinearLayout>
 
@@ -125,13 +137,15 @@
                         android:text="@string/cognomeSegnalatore"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/cognomeSegnalatoreRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop"/>
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -139,13 +153,15 @@
                         android:text="@string/provincia"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/provinciaRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop"/>
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -153,13 +169,15 @@
                         android:text="@string/gradoEmergenza"
                         android:layout_marginTop="@dimen/margineTop"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
 
                     <TextView
                         android:id="@+id/gradoEmergenzaRep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimoMargineTop" />
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:textSize="@dimen/textSize"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -169,33 +187,47 @@
                 android:text="@string/aggiungiMedia"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/margineMaxTop"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textSizeTitolo"/>
 
             <LinearLayout
-                android:id="@+id/linearAggiungiMedia"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <HorizontalScrollView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <LinearLayout
-                        android:id="@+id/linearImmagini"
+                    android:text="@string/eliminaImmagine"/>
+
+                <LinearLayout
+                    android:id="@+id/linearAggiungiMedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <HorizontalScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    </LinearLayout>
-                </HorizontalScrollView>
+                        android:layout_weight="1">
+                        <LinearLayout
+                            android:id="@+id/linearImmagini"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        </LinearLayout>
+                    </HorizontalScrollView>
 
-                <ImageButton
-                    android:id="@+id/btImmagini"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_camera"
-                    android:background="#00000000"/>
+                    <ImageButton
+                        android:id="@+id/btImmagini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_camera"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -214,7 +246,8 @@
                         android:text="@string/squadraIntervento"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/margineMaxTop"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/textSizeTitolo"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -225,13 +258,15 @@
                             android:id="@+id/checkPrimaPartenza"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/primaPartenza"/>
+                            android:text="@string/primaPartenza"
+                            android:textSize="@dimen/textSize"/>
                         
                         <TextView
                             android:id="@+id/orarioPrimaPartenzaTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -244,13 +279,15 @@
                             android:id="@+id/checkSecondaPartenza"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/secondaPartenza"/>
+                            android:text="@string/secondaPartenza"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioSecondaPartenzaTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -263,13 +300,15 @@
                             android:id="@+id/checkSupporto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/supporto"/>
+                            android:text="@string/supporto"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioSupportoTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -282,13 +321,15 @@
                             android:id="@+id/checkRincalzo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/rincalzo"/>
+                            android:text="@string/rincalzo"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioRincalzoTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -305,7 +346,8 @@
                         android:text="@string/forzeOrdineIntervenute"
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
-                        android:layout_marginTop="@dimen/margineMaxTop"/>
+                        android:layout_marginTop="@dimen/margineMaxTop"
+                        android:textSize="@dimen/textSizeTitolo"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -316,13 +358,15 @@
                             android:id="@+id/checkPolizia"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/poliziaReport"/>
+                            android:text="@string/poliziaReport"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioPoliziaTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -335,13 +379,15 @@
                             android:id="@+id/checkForestale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/forestaleReport"/>
+                            android:text="@string/forestaleReport"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioForestaleTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -354,13 +400,15 @@
                             android:id="@+id/checkCarabinieri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/carabienieriReport"/>
+                            android:text="@string/carabienieriReport"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioCarabinieriTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
 
                     </LinearLayout>
 
@@ -373,13 +421,15 @@
                             android:id="@+id/checkAmbulanza"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/ambulanzaReport"/>
+                            android:text="@string/ambulanzaReport"
+                            android:textSize="@dimen/textSize"/>
 
                         <TextView
                             android:id="@+id/orarioAmbulanzaTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
+                            android:layout_marginLeft="@dimen/minimoMargineTop"
+                            android:textSize="@dimen/textSize"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -400,7 +450,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/feriti"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:textSize="@dimen/textSize"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -414,7 +465,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/deceduti"
-                            android:inputType="number"/>
+                            android:inputType="number"
+                            android:textSize="@dimen/textSize"/>
                     </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -429,7 +481,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/descrizioneIntervento"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textSize="@dimen/textSize"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </RelativeLayout>

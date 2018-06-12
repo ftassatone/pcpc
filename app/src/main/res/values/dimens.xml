@@ -8,4 +8,9 @@
     <dimen name="minimoMargineBottom">5dp</dimen>
     <dimen name="minimoMargineTop">5dp</dimen>
     <dimen name="margineMaxTop">30dp</dimen>
+
+    <dimen name="textSizeTitolo">25sp</dimen>
+    <dimen name="textSizeSottotitolo">22sp</dimen>
+    <dimen name="textSizeButton">20sp</dimen>
+    <dimen name="textSize">18sp</dimen>
 </resources>

@@ -8,16 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout linearRinforzi, linearEmergenza;
+    private LinearLayout linearEmergenza;
     private Button btRinforzi, btPolizia, btForestale, btCarabinieri, btAmbulanza;
     private TextView nomeSegnalatoreTxt, indirizzoEmergenzaTxt, tipoEmergenzaTxt, cognomeSegnalatoreTxt, provinciaTxt, gradoEmergenzaTxt,
             informazioniAggiuntiveTxt;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        linearRinforzi = (LinearLayout) findViewById(R.id.linearRinforzi);
         linearEmergenza = (LinearLayout) findViewById(R.id.linearEmergenza);
         linearEmergenza.setBackground(getDrawable(R.drawable.bordo));
 
@@ -51,11 +52,39 @@ public class MainActivity extends AppCompatActivity {
         informazioniAggiuntiveTxt = (TextView) findViewById(R.id.informazioniAggiuntiveTxt);
         informazioniAggiuntiveTxt.setBackground(getDrawable(R.drawable.bordo));
         emergenze = new ArrayList<>();
-        //n=0;
         em = new Emergenza();
         emergenze =  em.creaEmergenze();
-        Log.d("LOG","emergenze "+emergenze);
         ottieniDati();
+
+
+
+        btPolizia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiamaRinforzi();
+            }
+        });
+
+        btForestale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiamaRinforzi();
+            }
+        });
+
+        btCarabinieri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiamaRinforzi();
+            }
+        });
+
+        btAmbulanza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiamaRinforzi();
+            }
+        });
     }
 
     public void popolaText(){
@@ -71,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
     public void ottieniDati(){
         Random random = new Random();
         n = random.nextInt(11)+1;
-        Log.d("LOG", "random "+n);
         nomeSegnalatore = emergenze.get(n).getNomeSegnalatore();
         indirizzoEmergenza = emergenze.get(n).getIndirizzoEmergenza();
         tipoEmergenza = emergenze.get(n).getTipoEmergenza();
@@ -80,9 +108,11 @@ public class MainActivity extends AppCompatActivity {
         informazioniAggiuntive = emergenze.get(n).getInformazioniAggiuntive();
         gradoEmergenza = emergenze.get(n).getGradoEmergenza();
         popolaText();
-        Log.d("DATI", "dati "+nomeSegnalatore+" "+indirizzoEmergenza+" "+tipoEmergenza+" "+cognomeSegnalatore+" "+provincia+" "+informazioniAggiuntive+" "+gradoEmergenza);
     }
 
+    public void chiamaRinforzi(){
+        Toast.makeText(MainActivity.this, "Richiesta rinforzi inviata in centrale.", Toast.LENGTH_SHORT).show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.compila_report, menu);

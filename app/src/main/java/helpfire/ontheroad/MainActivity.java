@@ -2,7 +2,9 @@ package helpfire.ontheroad;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +39,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     String nomeSegnalatore, indirizzoEmergenza, tipoEmergenza, cognomeSegnalatore, provincia, gradoEmergenza, informazioniAggiuntive;
     double latitudine, longitudine;
     private GoogleMap mMap;
-    private static LatLng partenza = null;
-    private static LatLng arrivo=null;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         emergenze = new ArrayList<>();
         em = new Emergenza();
         emergenze =  em.creaEmergenze();
-        partenza = new LatLng(40.7731935,14.7965608);
-        arrivo = new LatLng(latitudine,longitudine);
 
         ottieniDati();
 
@@ -170,5 +168,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng posizione = new LatLng(latitudine, longitudine);
         mMap.addMarker(new MarkerOptions().position(posizione).title("Emergenza"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posizione));
+    }
+
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false;
     }
 }

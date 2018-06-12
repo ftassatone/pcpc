@@ -29,7 +29,7 @@
 
                 <EditText
                     android:id="@+id/codiceCaposquadra"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -230,7 +230,8 @@
                         <TextView
                             android:id="@+id/orarioPrimaPartenzaTxt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                     </LinearLayout>
 
@@ -248,7 +249,8 @@
                         <TextView
                             android:id="@+id/orarioSecondaPartenzaTxt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                     </LinearLayout>
 
@@ -266,7 +268,8 @@
                         <TextView
                             android:id="@+id/orarioSupportoTxt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                     </LinearLayout>
 
@@ -284,7 +287,8 @@
                         <TextView
                             android:id="@+id/orarioRincalzoTxt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                     </LinearLayout>
                 </LinearLayout>

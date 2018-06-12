@@ -17,15 +17,25 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,14 +46,20 @@ public class Report extends AppCompatActivity{
 
     private LinearLayout linearEmergenzaRep, linearAggiungiMedia, linearImmagini;
     private TextView nomeSegnalatoreRep, indirizzoEmergenzaRep, tipoEmergenzaRep, cognomeSegnalatoreRep, provinciaRep, gradoEmergenzaRep,
-            descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt;
+            descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt,orarioArrivo, orarioPartenza,
+            orarioPrimaPartenzaTxt,
+            orarioSecondaPartenzaTxt, orarioSupportoTxt, orarioRincalzoTxt;
     private ImageButton btImmagini;
     private CheckBox checkPrimaPartenza, checkSecondaPartena, checkSupporto, checkRincalzo, checkPolizia, checkForestale,
             checkCarabinieri, checkAmbulanza,check;
+    private EditText codiceCapoSquadra;
+    private Button btArrivo, btPartenza,btAnnulla,btConferma;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int ID_RICHIESTA_PERMISSION = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 1 ;
-    private String ora;
+    private String ora, text;
+    AlertDialog.Builder alert;
+    private boolean flag = false;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -79,12 +95,59 @@ public class Report extends AppCompatActivity{
         orarioForestaleTxt = (TextView) findViewById(R.id.orarioForestaleTxt);
         orarioCarabinieriTxt = (TextView) findViewById(R.id.orarioCarabinieriTxt);
         orarioAmbulanzaTxt = (TextView) findViewById(R.id.orarioAmbulanzaTxt);
+        orarioPrimaPartenzaTxt = (TextView) findViewById(R.id.orarioPrimaPartenzaTxt);
+        orarioSecondaPartenzaTxt = (TextView) findViewById(R.id.orarioSecondaPartenzaTxt);
+        orarioSupportoTxt = (TextView) findViewById(R.id.orarioSupportoTxt);
+        orarioRincalzoTxt = (TextView) findViewById(R.id.orarioRincalzoTxt);
+
+        codiceCapoSquadra = (EditText) findViewById(R.id.codiceCaposquadra);
+
         btImmagini = (ImageButton) findViewById(R.id.btImmagini);
 
         checkPrimaPartenza = (CheckBox) findViewById(R.id.checkPrimaPartenza);
+        checkPrimaPartenza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkPrimaPartenza.isChecked()){
+                    flag=false;
+                    dialogVVF(view);
+                }else
+                    orarioPrimaPartenzaTxt.setText("");
+            }
+        });
         checkSecondaPartena = (CheckBox) findViewById(R.id.checkSecondaPartenza);
+        checkSecondaPartena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkSecondaPartena.isChecked()){
+                    flag=false;
+                    dialogVVF(view);
+                }else
+                    orarioSecondaPartenzaTxt.setText("");
+            }
+        });
         checkSupporto = (CheckBox) findViewById(R.id.checkSupporto);
+        checkSupporto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkSupporto.isChecked()) {
+                    flag=false;
+                    dialogVVF(view);
+                }else
+                    orarioSupportoTxt.setText("");
+            }
+        });
         checkRincalzo = (CheckBox) findViewById(R.id.checkRincalzo);
+        checkRincalzo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkRincalzo.isChecked()){
+                    flag=false;
+                    dialogVVF(view);
+                }else
+                    orarioRincalzoTxt.setText("");
+            }
+        });
         checkPolizia = (CheckBox) findViewById(R.id.checkPolizia);
         checkPolizia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,5 +341,170 @@ public class Report extends AppCompatActivity{
     }
 
     //creazione del dialog per l'inserimento dell'orario per le partenze e gli arrivi dei vvf
+    public void dialogVVF(final View view1){
 
+        alert = new AlertDialog.Builder(Report.this);
+        LayoutInflater inflater = Report.this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_orario,null);
+        //alert.setPositiveButton("OK",listener);
+        alert.setCancelable(false);
+        alert.setView(dialogView);
+        final AlertDialog ad = alert.show();
+
+        btArrivo = (Button) dialogView.findViewById(R.id.btArrivo);
+        btPartenza = (Button) dialogView.findViewById(R.id.btPartenza);
+        btAnnulla = (Button) dialogView.findViewById(R.id.btAnnulla);
+        btConferma = (Button) dialogView.findViewById(R.id.btConferma);
+        orarioArrivo = (TextView) dialogView.findViewById(R.id.orarioArrivo);
+        orarioArrivo.setText("");
+        orarioPartenza = (TextView) dialogView.findViewById(R.id.orarioPartenza);
+        orarioPartenza.setText("");
+
+        btArrivo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flag = true;
+                orarioArrivo.setText("");
+                final Calendar c = Calendar.getInstance();
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = c.get(Calendar.MINUTE);
+                check = (CheckBox) view1;
+                TimePickerDialog dialog = new TimePickerDialog(Report.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                        ora = hourOfDay + ":" + minute;
+                        orarioArrivo.setText(ora);
+                        switch(check.getText().toString()){
+                            case "Prima partenza":  orarioPrimaPartenzaTxt.setText("Arrivo - "+ora);
+                                break;
+                            case "Seconda partenza": orarioSecondaPartenzaTxt.setText("Arrivo - "+ora);
+                                break;
+                            case "Supporto": orarioSupportoTxt.setText("Arrivo - "+ora);
+                                break;
+                            case  "Rincalzo": orarioRincalzoTxt.setText("Arrivo - "+ora);
+                                break;
+                        }
+
+                    }
+                },hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
+                dialog.show();
+            }
+        });
+        btPartenza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flag){
+                    orarioPartenza.setText("");
+                    final Calendar c = Calendar.getInstance();
+                    int hour = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+                    check = (CheckBox) view1;
+                    TimePickerDialog dialog = new TimePickerDialog(Report.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                            ora = hourOfDay + ":" + minute;
+                            orarioPartenza.setText(ora);;
+                            switch (check.getText().toString()){
+                                case "Prima partenza":
+                                    text = orarioPrimaPartenzaTxt.getText().toString();
+                                    orarioPrimaPartenzaTxt.setText(text+" Partenza - "+ora);
+                                    break;
+                                case "Seconda partenza":
+                                    text = orarioSecondaPartenzaTxt.getText().toString();
+                                    orarioSecondaPartenzaTxt.setText(text+" Partenza - "+ora);
+                                    break;
+                                case "Supporto":
+                                    text = orarioSupportoTxt.getText().toString();
+                                    orarioSupportoTxt.setText(text+" Partenza - "+ora);
+                                    break;
+                                case "Rincalzo":
+                                    text = orarioRincalzoTxt.getText().toString();
+                                    orarioRincalzoTxt.setText(text+" Partenza - "+ora);
+                                    break;
+                            }
+
+                        }
+                    },hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
+                    dialog.show();
+                }else
+                    Toast.makeText(Report.this, "Inserire prima l'orario di arrivo", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btAnnulla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (check.getText().toString()){
+                    case "Prima partenza":
+                        orarioPrimaPartenzaTxt.setText("");
+                        check.setChecked(false);
+                        break;
+                    case "Seconda partenza":
+                        orarioSecondaPartenzaTxt.setText("");
+                        check.setChecked(false);
+                        break;
+                    case "Supporto":
+                        orarioSupportoTxt.setText("");
+                        check.setChecked(false);
+                        break;
+                    case "Rincalzo":
+                        orarioRincalzoTxt.setText("");
+                        check.setChecked(false);
+                }
+                ad.dismiss();
+            }
+        });
+
+        btConferma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(orarioArrivo.getPaint().measureText(orarioArrivo.getText().toString()) ==0 || orarioPartenza.getPaint().measureText(orarioPartenza.getText().toString()) ==0){
+                    Toast.makeText(Report.this, "Inserire gli orari di arrivo e partenza", Toast.LENGTH_SHORT).show();
+                }else {
+                    ad.dismiss();
+                }
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.save_report, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_saveReport) {
+            Intent vaiEmergency = new Intent(getApplicationContext(), MainActivity.class);
+            if(codiceCapoSquadra.getText().length()!=0){
+                startActivity(vaiEmergency);
+                Toast.makeText(Report.this, "Report memorizzato con successo", Toast.LENGTH_SHORT).show();
+            }else{
+                codiceCapoSquadra.setError("Inserire il codice caposquadra prima di salvare il report");
+                codiceCapoSquadra.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        codiceCapoSquadra.setError(null);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
+            }
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

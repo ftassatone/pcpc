@@ -150,6 +150,23 @@
                         android:layout_marginTop="@dimen/minimoMargineTop"
                         android:layout_marginBottom="@dimen/margineBottom"
                         android:textSize="@dimen/textSize"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/posizione"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margineTop"
+                        android:textSize="@dimen/textSizeSottotitolo"/>
+
+                    <TextView
+                        android:id="@+id/posizioneTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimoMargineTop"
+                        android:layout_marginBottom="@dimen/margineBottom"
+                        android:textSize="@dimen/textSize"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -208,6 +225,15 @@
                         android:textSize="@dimen/textSize"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                tools:context="prova.mappamappa.MapsActivity"
+                android:layout_marginTop="@dimen/margineMaxTop"/>
+
 
             <TextView
                 android:layout_width="wrap_content"

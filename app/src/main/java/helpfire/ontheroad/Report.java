@@ -47,7 +47,7 @@ public class Report extends AppCompatActivity{
     private LinearLayout linearEmergenzaRep, linearAggiungiMedia, linearImmagini;
     private TextView nomeSegnalatoreRep, indirizzoEmergenzaRep, tipoEmergenzaRep, cognomeSegnalatoreRep, provinciaRep, gradoEmergenzaRep,
             descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt,orarioArrivo, orarioPartenza,
-            orarioPrimaPartenzaTxt,
+            orarioPrimaPartenzaTxt, posizioneReportTxt,
             orarioSecondaPartenzaTxt, orarioSupportoTxt, orarioRincalzoTxt;
     private ImageButton btImmagini;
     private CheckBox checkPrimaPartenza, checkSecondaPartena, checkSupporto, checkRincalzo, checkPolizia, checkForestale,
@@ -99,6 +99,7 @@ public class Report extends AppCompatActivity{
         orarioSecondaPartenzaTxt = (TextView) findViewById(R.id.orarioSecondaPartenzaTxt);
         orarioSupportoTxt = (TextView) findViewById(R.id.orarioSupportoTxt);
         orarioRincalzoTxt = (TextView) findViewById(R.id.orarioRincalzoTxt);
+        posizioneReportTxt = (TextView) findViewById(R.id.posizioneReportTxt);
 
         codiceCapoSquadra = (EditText) findViewById(R.id.codiceCaposquadra);
 
@@ -210,6 +211,8 @@ public class Report extends AppCompatActivity{
         provinciaRep.setText(prendiDati.getExtras().getString("provincia"));
         gradoEmergenzaRep.setText(prendiDati.getExtras().getString("grado"));
         descrizioneEmergenzaRep.setText(prendiDati.getExtras().getString("informazioni"));
+        Log.d("LOG","pos "+prendiDati.getExtras().getString("latitudine")+ ":" + prendiDati.getExtras().getString("longitudine"));
+        posizioneReportTxt.setText(prendiDati.getExtras().getDouble("latitudine")+ " : " + prendiDati.getExtras().getDouble("longitudine"));
     }
 
     //creazione del dialog per la scelta tra galleria e fotocamera

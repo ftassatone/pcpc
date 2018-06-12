@@ -14,25 +14,41 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.internal.la;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private LinearLayout linearEmergenza;
     private Button btRinforzi, btPolizia, btForestale, btCarabinieri, btAmbulanza;
     private TextView nomeSegnalatoreTxt, indirizzoEmergenzaTxt, tipoEmergenzaTxt, cognomeSegnalatoreTxt, provinciaTxt, gradoEmergenzaTxt,
-            informazioniAggiuntiveTxt;
+            informazioniAggiuntiveTxt,posizioneTxt;
     private Emergenza em;
     private ArrayList<Emergenza> emergenze;
     int n;
     String nomeSegnalatore, indirizzoEmergenza, tipoEmergenza, cognomeSegnalatore, provincia, gradoEmergenza, informazioniAggiuntive;
+    double latitudine, longitudine;
+    private GoogleMap mMap;
+    private static LatLng partenza = null;
+    private static LatLng arrivo=null;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         linearEmergenza = (LinearLayout) findViewById(R.id.linearEmergenza);
         linearEmergenza.setBackground(getDrawable(R.drawable.bordo));
@@ -50,10 +66,14 @@ public class MainActivity extends AppCompatActivity {
         provinciaTxt = (TextView) findViewById(R.id.provinciaTxt);
         gradoEmergenzaTxt = (TextView) findViewById(R.id.gradoEmergenzaTxt);
         informazioniAggiuntiveTxt = (TextView) findViewById(R.id.informazioniAggiuntiveTxt);
+        posizioneTxt =  (TextView) findViewById(R.id.posizioneTxt);
         informazioniAggiuntiveTxt.setBackground(getDrawable(R.drawable.bordo));
         emergenze = new ArrayList<>();
         em = new Emergenza();
         emergenze =  em.creaEmergenze();
+        partenza = new LatLng(40.7731935,14.7965608);
+        arrivo = new LatLng(latitudine,longitudine);
+
         ottieniDati();
 
 
@@ -95,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         provinciaTxt.setText(provincia);
         informazioniAggiuntiveTxt.setText(informazioniAggiuntive);
         gradoEmergenzaTxt.setText(gradoEmergenza);
+        posizioneTxt.setText(latitudine + " : "+ longitudine);
     }
 
     public void ottieniDati(){
@@ -107,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
         provincia = emergenze.get(n).getProvincia();
         informazioniAggiuntive = emergenze.get(n).getInformazioniAggiuntive();
         gradoEmergenza = emergenze.get(n).getGradoEmergenza();
+        latitudine = emergenze.get(n).getLatitudine();
+        longitudine = emergenze.get(n).getLongitudine();
         popolaText();
     }
 
@@ -131,10 +154,21 @@ public class MainActivity extends AppCompatActivity {
             vaiReport.putExtra("informazioni", informazioniAggiuntive);
             vaiReport.putExtra("grado", gradoEmergenza);
             vaiReport.putExtra("provincia", provincia);
+            vaiReport.putExtra("latitudine", latitudine);
+            vaiReport.putExtra("longitudine",longitudine);
             startActivity(vaiReport);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        // Add a marker in Sydney and move the camera
+        LatLng posizione = new LatLng(latitudine, longitudine);
+        mMap.addMarker(new MarkerOptions().position(posizione).title("Emergenza"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(posizione));
     }
 }

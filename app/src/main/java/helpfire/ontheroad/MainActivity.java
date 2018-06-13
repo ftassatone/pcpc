@@ -74,7 +74,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         ottieniDati();
 
-
+        btRinforzi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiamaRinforzi();
+            }
+        });
 
         btPolizia.setOnClickListener(new View.OnClickListener() {
             @Override

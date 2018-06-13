@@ -1,6 +1,7 @@
 package helpfire.ontheroad;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -46,14 +49,14 @@ public class Report extends AppCompatActivity{
 
     private LinearLayout linearEmergenzaRep, linearAggiungiMedia, linearImmagini;
     private TextView nomeSegnalatoreRep, indirizzoEmergenzaRep, tipoEmergenzaRep, cognomeSegnalatoreRep, provinciaRep, gradoEmergenzaRep,
-            descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt,orarioArrivo, orarioPartenza,
-            orarioPrimaPartenzaTxt, posizioneReportTxt,
-            orarioSecondaPartenzaTxt, orarioSupportoTxt, orarioRincalzoTxt;
+            descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt,orarioPrimaPartenzaTxt,
+            posizioneReportTxt, orarioSecondaPartenzaTxt, orarioSupportoTxt, orarioRincalzoTxt;
     private ImageButton btImmagini;
     private CheckBox checkPrimaPartenza, checkSecondaPartena, checkSupporto, checkRincalzo, checkPolizia, checkForestale,
             checkCarabinieri, checkAmbulanza,check;
     private EditText codiceCapoSquadra;
-    private Button btArrivo, btPartenza,btAnnulla,btConferma;
+    private Button btAnnulla,btConferma;
+    private AutoCompleteTextView orarioArrivoTxt, orarioPartenzaTxt;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int ID_RICHIESTA_PERMISSION = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 1 ;
@@ -202,7 +205,6 @@ public class Report extends AppCompatActivity{
         popolaText();
     }
 
-
     public void popolaText(){
         Intent prendiDati = getIntent();
         nomeSegnalatoreRep.setText(prendiDati.getExtras().getString("nome"));
@@ -257,6 +259,7 @@ public class Report extends AppCompatActivity{
                         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
                         String path = saveImage(bitmap);
                         ImageView imageView = new ImageView(getApplicationContext());
+                        imageView.setImageBitmap(bitmap);
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
                         layoutParams.setMargins(30,5,0,5);
                         imageView.setLayoutParams(layoutParams);
@@ -331,8 +334,7 @@ public class Report extends AppCompatActivity{
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
             layoutParams.setMargins(30,5,0,5);
             imageView.setLayoutParams(layoutParams);
-            linearImmagini.addView(imageView);
-            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            linearImmagini.addView(imageView);imageView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(final View view) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
@@ -407,29 +409,23 @@ public class Report extends AppCompatActivity{
 
     //creazione del dialog per l'inserimento dell'orario per le partenze e gli arrivi dei vvf
     public void dialogVVF(final View view1){
-
         alert = new AlertDialog.Builder(Report.this);
         LayoutInflater inflater = Report.this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_orario,null);
-        //alert.setPositiveButton("OK",listener);
         alert.setCancelable(false);
         alert.setView(dialogView);
         final AlertDialog ad = alert.show();
-
-        btArrivo = (Button) dialogView.findViewById(R.id.btArrivo);
-        btPartenza = (Button) dialogView.findViewById(R.id.btPartenza);
+        orarioArrivoTxt = (AutoCompleteTextView) dialogView.findViewById(R.id.orarioArrivoTxt);
+        orarioArrivoTxt.setKeyListener(null);
+        orarioPartenzaTxt = (AutoCompleteTextView) dialogView.findViewById(R.id.orarioPartenzaTxt);
+        orarioPartenzaTxt.setKeyListener(null);
         btAnnulla = (Button) dialogView.findViewById(R.id.btAnnulla);
         btConferma = (Button) dialogView.findViewById(R.id.btConferma);
-        orarioArrivo = (TextView) dialogView.findViewById(R.id.orarioArrivo);
-        orarioArrivo.setText("");
-        orarioPartenza = (TextView) dialogView.findViewById(R.id.orarioPartenza);
-        orarioPartenza.setText("");
 
-        btArrivo.setOnClickListener(new View.OnClickListener() {
+        orarioArrivoTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 flag = true;
-                orarioArrivo.setText("");
                 final Calendar c = Calendar.getInstance();
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
@@ -438,7 +434,7 @@ public class Report extends AppCompatActivity{
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                         ora = hourOfDay + ":" + minute;
-                        orarioArrivo.setText(ora);
+                        orarioArrivoTxt.setText(ora);
                         switch(check.getText().toString()){
                             case "Prima partenza":  orarioPrimaPartenzaTxt.setText("Arrivo - "+ora);
                                 break;
@@ -449,17 +445,15 @@ public class Report extends AppCompatActivity{
                             case  "Rincalzo": orarioRincalzoTxt.setText("Arrivo - "+ora);
                                 break;
                         }
-
                     }
                 },hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
                 dialog.show();
             }
         });
-        btPartenza.setOnClickListener(new View.OnClickListener() {
+        orarioPartenzaTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(flag){
-                    orarioPartenza.setText("");
                     final Calendar c = Calendar.getInstance();
                     int hour = c.get(Calendar.HOUR_OF_DAY);
                     int minute = c.get(Calendar.MINUTE);
@@ -468,7 +462,7 @@ public class Report extends AppCompatActivity{
                         @Override
                         public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                             ora = hourOfDay + ":" + minute;
-                            orarioPartenza.setText(ora);
+                            orarioPartenzaTxt.setText(ora);
                             switch (check.getText().toString()){
                                 case "Prima partenza":
                                     text = orarioPrimaPartenzaTxt.getText().toString();
@@ -487,7 +481,6 @@ public class Report extends AppCompatActivity{
                                     orarioRincalzoTxt.setText(text+" Partenza - "+ora);
                                     break;
                             }
-
                         }
                     },hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
                     dialog.show();
@@ -523,12 +516,11 @@ public class Report extends AppCompatActivity{
         btConferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(orarioArrivo.getPaint().measureText(orarioArrivo.getText().toString()) ==0 || orarioPartenza.getPaint().measureText(orarioPartenza.getText().toString()) ==0){
+                if(orarioArrivoTxt.getPaint().measureText(orarioArrivoTxt.getText().toString()) ==0 || orarioPartenzaTxt.getPaint().measureText(orarioPartenzaTxt.getText().toString()) ==0){
                     Toast.makeText(Report.this, "Inserire gli orari di arrivo e partenza", Toast.LENGTH_SHORT).show();
                 }else {
                     ad.dismiss();
                 }
-
             }
         });
     }
@@ -544,32 +536,27 @@ public class Report extends AppCompatActivity{
         int id = item.getItemId();
         if (id == R.id.action_saveReport) {
             Intent vaiEmergency = new Intent(getApplicationContext(), MainActivity.class);
-            if(codiceCapoSquadra.getText().length()!=0){
+            if (codiceCapoSquadra.getText().length() != 0) {
                 startActivity(vaiEmergency);
                 Toast.makeText(Report.this, "Report memorizzato con successo", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 codiceCapoSquadra.setError("Inserire il codice caposquadra prima di salvare il report");
                 codiceCapoSquadra.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
                     }
-
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                         codiceCapoSquadra.setError(null);
                     }
-
                     @Override
                     public void afterTextChanged(Editable editable) {
 
                     }
                 });
             }
-
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

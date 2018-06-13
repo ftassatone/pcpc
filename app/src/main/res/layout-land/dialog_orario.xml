@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
+    <!--android:gravity="center"-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,52 +12,41 @@
         android:textColor="@android:color/black"
         android:textStyle="bold"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margineMaxTop">
+        android:layout_marginTop="@dimen/margineTop">
 
-        <TextView
-            android:id="@+id/orarioArrivo"
-            android:layout_width="wrap_content"
+        <AutoCompleteTextView
+            android:id="@+id/orarioArrivoTxt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="-"/>
+            android:hint="@string/orarioArrivo"
+            android:textSize="@dimen/textSize"
+            android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:id="@+id/btArrivo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Arrivo"
-            android:textAllCaps="false"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/margineTop">
 
-        <TextView
-            android:id="@+id/orarioPartenza"
-            android:layout_width="wrap_content"
+        <AutoCompleteTextView
+            android:id="@+id/orarioPartenzaTxt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="-"/>
-
-        <Button
-            android:id="@+id/btPartenza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Partenza"
-            android:textAllCaps="false"/>
-    </LinearLayout>
+            android:hint="@string/orarioPartenza"
+            android:textSize="@dimen/textSize"
+            android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="right">
+        android:gravity="right"
+        android:layout_marginTop="@dimen/margineMaxTop">
 
         <Button
             android:id="@+id/btAnnulla"
@@ -65,18 +54,15 @@
             android:layout_height="wrap_content"
             android:text="Annulla"
             android:textAllCaps="false"
-            android:background="#00000000"
-            android:layout_marginRight="@dimen/minimoMargineTop"/>
+            android:background="#00000000"/>
+
         <Button
             android:id="@+id/btConferma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Conferma"
             android:textAllCaps="false"
-            android:background="#00000000"
-            android:layout_marginRight="@dimen/minimoMargineTop"/>
-
-
+            android:background="#00000000"/>
     </LinearLayout>
 
 

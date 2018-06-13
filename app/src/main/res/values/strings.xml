@@ -35,4 +35,6 @@
     <string name="eliminaImmagine">INFO: Per eliminare un media tenere premuto sull\'anteprima.</string>
     <string name="posizione">Posizione</string>
     <string name="eliminaFoto">Sei sicuro di voler eliminare l\'immagine?</string>
+    <string name="orarioArrivo">Inserisci l\'orario di arrivo</string>
+    <string name="orarioPartenza">Inserisci l\'orario di partenza</string>
 </resources>

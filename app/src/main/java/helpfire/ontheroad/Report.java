@@ -59,7 +59,8 @@ public class Report extends AppCompatActivity{
     private static final int REQUEST_IMAGE_CAPTURE = 1 ;
     private String ora, text;
     AlertDialog.Builder alert;
-    private boolean flag = false;
+    private boolean flag;
+
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -256,44 +257,67 @@ public class Report extends AppCompatActivity{
                         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
                         String path = saveImage(bitmap);
                         ImageView imageView = new ImageView(getApplicationContext());
-                        imageView.setImageBitmap(bitmap);
-                        FrameLayout frameLayout = new FrameLayout(getApplicationContext());
-                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
-                        frameLayout.setLayoutParams(layoutParams1);
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+                        layoutParams.setMargins(30,5,0,5);
                         imageView.setLayoutParams(layoutParams);
+                        linearImmagini.addView(imageView);
                         imageView.setOnLongClickListener(new View.OnLongClickListener() {
                             @Override
-                            public boolean onLongClick(View view) {
-                                ImageView img = (ImageView) view;
-                                Log.d("LOG", "img "+img);
-                                linearImmagini.removeView(img);
-                                return false;
+                            public boolean onLongClick(final View view) {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
+                                alert.setCancelable(false);
+                                alert.setMessage(R.string.eliminaFoto);
+                                alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        linearImmagini.removeView(view);
+                                        Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //ad.dismiss();
+                                    }
+                                });
+                                alert.show();
+                                return true;
                             }
                         });
-                        linearImmagini.addView(imageView);
-                        linearImmagini.addView(frameLayout);
+
                     }else{
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),contentURI);
                         String path = saveImage(bitmap);
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setImageBitmap(bitmap);
-                        FrameLayout frameLayout = new FrameLayout(getApplicationContext());
-                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
-                        frameLayout.setLayoutParams(layoutParams1);
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+                        layoutParams.setMargins(30,5,0,5);
                         imageView.setLayoutParams(layoutParams);
+                        linearImmagini.addView(imageView);
                         imageView.setOnLongClickListener(new View.OnLongClickListener() {
                             @Override
-                            public boolean onLongClick(View view) {
-                                ImageView img = (ImageView) view;
-                                Log.d("LOG", "img "+img);
-                                linearImmagini.removeView(img);
-                                return false;
+                            public boolean onLongClick(final View view) {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
+                                alert.setCancelable(false);
+                                alert.setMessage(R.string.eliminaFoto);
+                                alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        linearImmagini.removeView(view);
+                                        Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //ad.dismiss();
+                                    }
+                                });
+                                alert.show();
+                                return true;
                             }
                         });
-                        linearImmagini.addView(imageView);
-                        linearImmagini.addView(frameLayout);
+
                     }
 
                 }catch (IOException e){
@@ -304,13 +328,33 @@ public class Report extends AppCompatActivity{
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(thumbnail);
-            FrameLayout frameLayout = new FrameLayout(getApplicationContext());
-            LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(30, 30);
-            frameLayout.setLayoutParams(layoutParams1);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+            layoutParams.setMargins(30,5,0,5);
             imageView.setLayoutParams(layoutParams);
             linearImmagini.addView(imageView);
-            linearImmagini.addView(frameLayout);
+            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(final View view) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
+                    alert.setCancelable(false);
+                    alert.setMessage(R.string.eliminaFoto);
+                    alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            linearImmagini.removeView(view);
+                            Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //ad.dismiss();
+                        }
+                    });
+                    alert.show();
+                    return true;
+                }
+            });
         }
     }
 
@@ -424,7 +468,7 @@ public class Report extends AppCompatActivity{
                         @Override
                         public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                             ora = hourOfDay + ":" + minute;
-                            orarioPartenza.setText(ora);;
+                            orarioPartenza.setText(ora);
                             switch (check.getText().toString()){
                                 case "Prima partenza":
                                     text = orarioPrimaPartenzaTxt.getText().toString();

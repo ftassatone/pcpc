@@ -19,12 +19,12 @@
     <string name="reportEmergenza">Report emergenza</string>
     <string name="codiceCapoSquadra">Codice caposquadra</string>
     <string name="aggiungiMedia">Aggiungi media</string>
-    <string name="squadraIntervento">Squadra d intervento</string>
+    <string name="squadraIntervento">Squadra d\'intervento</string>
     <string name="primaPartenza">Prima partenza</string>
     <string name="secondaPartenza">Seconda partenza</string>
     <string name="supporto">Supporto</string>
     <string name="rincalzo">Rincalzo</string>
-    <string name="forzeOrdineIntervenute">Forze dell ordine intervenute</string>
+    <string name="forzeOrdineIntervenute">Forze dell\'ordine intervenute</string>
     <string name="poliziaReport">Polizia</string>
     <string name="forestaleReport">Forestale</string>
     <string name="carabienieriReport">Carabinieri</string>
@@ -32,6 +32,7 @@
     <string name="feriti">Feriti</string>
     <string name="deceduti">Deceduti</string>
     <string name="descrizioneIntervento">Descrizione intervento</string>
-    <string name="eliminaImmagine">Per eliminare una foto tenere premuto su di essa.</string>
+    <string name="eliminaImmagine">INFO: Per eliminare un media tenere premuto sull\'anteprima.</string>
     <string name="posizione">Posizione</string>
+    <string name="eliminaFoto">Sei sicuro di voler eliminare l\'immagine?</string>
 </resources>

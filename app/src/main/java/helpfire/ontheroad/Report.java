@@ -264,9 +264,9 @@ public class Report extends AppCompatActivity{
                         layoutParams.setMargins(30,5,0,5);
                         imageView.setLayoutParams(layoutParams);
                         linearImmagini.addView(imageView);
-                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                        imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public boolean onLongClick(final View view) {
+                            public void onClick(final View view) {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
                                 alert.setCancelable(false);
                                 alert.setMessage(R.string.eliminaFoto);
@@ -284,7 +284,6 @@ public class Report extends AppCompatActivity{
                                     }
                                 });
                                 alert.show();
-                                return true;
                             }
                         });
 
@@ -297,9 +296,9 @@ public class Report extends AppCompatActivity{
                         layoutParams.setMargins(30,5,0,5);
                         imageView.setLayoutParams(layoutParams);
                         linearImmagini.addView(imageView);
-                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                        imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public boolean onLongClick(final View view) {
+                            public void onClick(final View view) {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
                                 alert.setCancelable(false);
                                 alert.setMessage(R.string.eliminaFoto);
@@ -317,10 +316,8 @@ public class Report extends AppCompatActivity{
                                     }
                                 });
                                 alert.show();
-                                return true;
                             }
                         });
-
                     }
 
                 }catch (IOException e){
@@ -334,9 +331,9 @@ public class Report extends AppCompatActivity{
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
             layoutParams.setMargins(30,5,0,5);
             imageView.setLayoutParams(layoutParams);
-            linearImmagini.addView(imageView);imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(final View view) {
+                public void onClick(final View view) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
                     alert.setCancelable(false);
                     alert.setMessage(R.string.eliminaFoto);
@@ -354,7 +351,6 @@ public class Report extends AppCompatActivity{
                         }
                     });
                     alert.show();
-                    return true;
                 }
             });
         }

@@ -85,9 +85,6 @@ public class Report extends AppCompatActivity{
         linearAggiungiMedia = (LinearLayout) findViewById(R.id.linearAggiungiMedia);
         linearImmagini = (LinearLayout) findViewById(R.id.linearImmagini);
 
-        linearAggiungiMedia.setBackground(getDrawable(R.drawable.bordo));
-        linearEmergenzaRep.setBackground(getDrawable(R.drawable.bordo));
-
         nomeSegnalatoreRep = (TextView) findViewById(R.id.nomeSegnalatoreRep);
         indirizzoEmergenzaRep = (TextView) findViewById(R.id.indirizzoEmergenzaRep);
         tipoEmergenzaRep = (TextView) findViewById(R.id.tipoEmergenzaRep);

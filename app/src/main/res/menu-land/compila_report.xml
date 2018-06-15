@@ -6,7 +6,7 @@
         android:id="@+id/action_compilaReport"
         android:orderInCategory="100"
         android:title="compilaReport"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@drawable/ic_report"
         app:showAsAction="ifRoom" />
 
 </menu>

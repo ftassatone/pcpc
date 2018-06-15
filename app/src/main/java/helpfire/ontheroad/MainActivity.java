@@ -51,13 +51,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         linearEmergenza = (LinearLayout) findViewById(R.id.linearEmergenza);
-        linearEmergenza.setBackground(getDrawable(R.drawable.bordo));
 
         btRinforzi = (Button) findViewById(R.id.btRinforzi);
+        btRinforzi.setBackground(getDrawable(R.drawable.bordo_button));
         btPolizia = (Button) findViewById(R.id.btPolizia);
+        btPolizia.setBackground(getDrawable(R.drawable.bordo_button));
         btForestale = (Button) findViewById(R.id.btForestale);
+        btForestale.setBackground(getDrawable(R.drawable.bordo_button));
         btCarabinieri = (Button) findViewById(R.id.btCarabinieri);
+        btCarabinieri.setBackground(getDrawable(R.drawable.bordo_button));
         btAmbulanza = (Button) findViewById(R.id.btAmbulanza);
+        btAmbulanza.setBackground(getDrawable(R.drawable.bordo_button));
 
         nomeSegnalatoreTxt = (TextView) findViewById(R.id.nomeSegnalatoreTxt);
         indirizzoEmergenzaTxt = (TextView) findViewById(R.id.indirizzoEmergenzaTxt);
@@ -67,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         gradoEmergenzaTxt = (TextView) findViewById(R.id.gradoEmergenzaTxt);
         informazioniAggiuntiveTxt = (TextView) findViewById(R.id.informazioniAggiuntiveTxt);
         posizioneTxt =  (TextView) findViewById(R.id.posizioneTxt);
-        informazioniAggiuntiveTxt.setBackground(getDrawable(R.drawable.bordo));
         emergenze = new ArrayList<>();
         em = new Emergenza();
         emergenze =  em.creaEmergenze();

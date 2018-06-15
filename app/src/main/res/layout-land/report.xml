@@ -45,6 +45,12 @@
                 android:layout_marginTop="@dimen/margineMaxTop"
                 android:textSize="@dimen/textSizeTitolo"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent">
+            </View>
+
             <LinearLayout
                 android:id="@+id/linearEmergenzaRep"
                 android:layout_width="match_parent"
@@ -206,6 +212,12 @@
                 android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textSizeTitolo"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent">
+            </View>
 
             <LinearLayout
                 android:layout_width="match_parent"

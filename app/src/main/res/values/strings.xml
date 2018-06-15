@@ -37,4 +37,5 @@
     <string name="eliminaFoto">Sei sicuro di voler eliminare l\'immagine?</string>
     <string name="orarioArrivo">Inserisci l\'orario di arrivo</string>
     <string name="orarioPartenza">Inserisci l\'orario di partenza</string>
+    <string name="mappaEmergenza">Mappa emergenza</string>
 </resources>

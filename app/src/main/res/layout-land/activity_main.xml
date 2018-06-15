@@ -50,7 +50,9 @@
                     android:layout_weight="2"
                     android:text="@string/polizia"
                     android:background="#00000000"
-                    android:textSize="@dimen/textSizeButton"/>
+                    android:textSize="@dimen/textSizeButton"
+                    android:drawableTop="@drawable/polizia"
+                    android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                 <Button
                     android:id="@+id/btForestale"
@@ -59,7 +61,9 @@
                     android:layout_weight="2"
                     android:text="@string/forestale"
                     android:background="#00000000"
-                    android:textSize="@dimen/textSizeButton"/>
+                    android:textSize="@dimen/textSizeButton"
+                    android:drawableTop="@drawable/forestale"
+                    android:layout_marginLeft="@dimen/minimoMargineTop"/>
 
                 <Button
                     android:id="@+id/btCarabinieri"
@@ -68,7 +72,10 @@
                     android:layout_weight="2"
                     android:text="@string/carabienieri"
                     android:background="#00000000"
-                    android:textSize="@dimen/textSizeButton"/>
+                    android:textSize="@dimen/textSizeButton"
+                    android:drawableTop="@drawable/carabinieri"
+                    android:layout_marginLeft="@dimen/minimoMargineTop"/>
+
 
                 <Button
                     android:id="@+id/btAmbulanza"
@@ -77,7 +84,9 @@
                     android:layout_weight="2"
                     android:text="@string/ambulanza"
                     android:background="#00000000"
-                    android:textSize="@dimen/textSizeButton"/>
+                    android:textSize="@dimen/textSizeButton"
+                    android:drawableTop="@drawable/ambulanza"
+                    android:layout_marginLeft="@dimen/minimoMargineTop"/>
             </LinearLayout>
 
             <TextView
@@ -88,6 +97,12 @@
                 android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textSizeTitolo"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent">
+            </View>
 
             <LinearLayout
                 android:id="@+id/linearEmergenza"
@@ -226,6 +241,20 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mappaEmergenza"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margineMaxTop"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textSizeTitolo"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent">
+            </View>
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -243,6 +272,12 @@
                 android:layout_marginTop="@dimen/margineMaxTop"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textSizeTitolo"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent">
+            </View>
 
             <TextView
                 android:id="@+id/informazioniAggiuntiveTxt"

@@ -41,7 +41,8 @@
                     android:text="@string/rinforzi"
                     android:textAllCaps="false"
                     android:background="#00000000"
-                    android:textSize="@dimen/textSizeButton"/>
+                    android:textSize="@dimen/textSizeButton"
+                    android:drawableTop="@drawable/vvf"/>
 
                 <Button
                     android:id="@+id/btPolizia"

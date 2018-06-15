@@ -32,7 +32,6 @@
     <string name="feriti">Feriti</string>
     <string name="deceduti">Deceduti</string>
     <string name="descrizioneIntervento">Descrizione intervento</string>
-    <string name="eliminaImmagine">INFO: Per eliminare un media selezionare l\'anteprima.</string>
     <string name="posizione">Posizione</string>
     <string name="eliminaFoto">Sei sicuro di voler eliminare l\'immagine?</string>
     <string name="orarioArrivo">Inserisci l\'orario di arrivo</string>

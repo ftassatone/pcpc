@@ -43,11 +43,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Report extends AppCompatActivity{
 
-    private LinearLayout linearEmergenzaRep, linearAggiungiMedia, linearImmagini;
+    private LinearLayout linearImmagini;
     private TextView nomeSegnalatoreRep, indirizzoEmergenzaRep, tipoEmergenzaRep, cognomeSegnalatoreRep, provinciaRep, gradoEmergenzaRep,
             descrizioneEmergenzaRep, orarioPoliziaTxt, orarioForestaleTxt,orarioCarabinieriTxt, orarioAmbulanzaTxt,orarioPrimaPartenzaTxt,
             posizioneReportTxt, orarioSecondaPartenzaTxt, orarioSupportoTxt, orarioRincalzoTxt;
@@ -63,6 +64,8 @@ public class Report extends AppCompatActivity{
     private String ora, text;
     AlertDialog.Builder alert;
     private boolean flag;
+    private int count=0;
+    private ArrayList<ImageView> arrayImg;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -81,8 +84,6 @@ public class Report extends AppCompatActivity{
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, ID_RICHIESTA_PERMISSION);
         }
 
-        linearEmergenzaRep = (LinearLayout) findViewById(R.id.linearEmergenzaRep);
-        linearAggiungiMedia = (LinearLayout) findViewById(R.id.linearAggiungiMedia);
         linearImmagini = (LinearLayout) findViewById(R.id.linearImmagini);
 
         nomeSegnalatoreRep = (TextView) findViewById(R.id.nomeSegnalatoreRep);
@@ -105,6 +106,8 @@ public class Report extends AppCompatActivity{
         codiceCapoSquadra = (EditText) findViewById(R.id.codiceCaposquadra);
 
         btImmagini = (ImageButton) findViewById(R.id.btImmagini);
+
+        arrayImg = new ArrayList<>();
 
         checkPrimaPartenza = (CheckBox) findViewById(R.id.checkPrimaPartenza);
         checkPrimaPartenza.setOnClickListener(new View.OnClickListener() {
@@ -218,8 +221,8 @@ public class Report extends AppCompatActivity{
     //creazione del dialog per la scelta tra galleria e fotocamera
     public void creaBuilder(){
         AlertDialog.Builder builder = new AlertDialog.Builder(Report.this);
-        builder.setTitle("Choose Image Source");
-        builder.setItems(new CharSequence[] {"Gallery", "Camera"},
+        builder.setTitle("Scegli immagine da:");
+        builder.setItems(new CharSequence[] {"Galleria", "Fotocamera"},
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -242,6 +245,7 @@ public class Report extends AppCompatActivity{
 
     //apertura della fotocamera,successivamente mostra la foto nell'activity nella sezione delle anteprime.
     //selezione dell'immagine dalla galleria e anteprima nell'activity.
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -257,11 +261,19 @@ public class Report extends AppCompatActivity{
                         String path = saveImage(bitmap);
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setImageBitmap(bitmap);
-                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
-                        layoutParams.setMargins(30,5,0,5);
-                        imageView.setLayoutParams(layoutParams);
-                        linearImmagini.addView(imageView);
-                        imageView.setOnClickListener(new View.OnClickListener() {
+                        ImageButton img = new ImageButton(getApplicationContext());
+                        img.setBackground(getDrawable(R.drawable.del));
+                        final FrameLayout frame = new FrameLayout(getApplicationContext());
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 150);
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(145, 145);
+                        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(35, 35);
+                        frame.setLayoutParams(layoutParams);
+                        imageView.setLayoutParams(layoutParams1);
+                        img.setLayoutParams(layoutParams2);
+                        frame.addView(imageView);
+                        frame.addView(img);
+                        linearImmagini.addView(frame);
+                        img.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(final View view) {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
@@ -270,8 +282,7 @@ public class Report extends AppCompatActivity{
                                 alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        linearImmagini.removeView(view);
-                                        Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                                       linearImmagini.removeView(frame);
                                     }
                                 });
                                 alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
@@ -289,11 +300,19 @@ public class Report extends AppCompatActivity{
                         String path = saveImage(bitmap);
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setImageBitmap(bitmap);
-                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
-                        layoutParams.setMargins(30,5,0,5);
-                        imageView.setLayoutParams(layoutParams);
-                        linearImmagini.addView(imageView);
-                        imageView.setOnClickListener(new View.OnClickListener() {
+                        ImageButton img = new ImageButton(getApplicationContext());
+                        img.setBackground(getDrawable(R.drawable.del));
+                        final FrameLayout frame = new FrameLayout(getApplicationContext());
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 150);
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(145, 145);
+                        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(35, 35);
+                        frame.setLayoutParams(layoutParams);
+                        imageView.setLayoutParams(layoutParams1);
+                        img.setLayoutParams(layoutParams2);
+                        frame.addView(imageView);
+                        frame.addView(img);
+                        linearImmagini.addView(frame);
+                        img.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(final View view) {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
@@ -302,8 +321,7 @@ public class Report extends AppCompatActivity{
                                 alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        linearImmagini.removeView(view);
-                                        Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                                        linearImmagini.removeView(frame);
                                     }
                                 });
                                 alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
@@ -325,10 +343,19 @@ public class Report extends AppCompatActivity{
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(thumbnail);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
-            layoutParams.setMargins(30,5,0,5);
-            imageView.setLayoutParams(layoutParams);
-            imageView.setOnClickListener(new View.OnClickListener() {
+            ImageButton img = new ImageButton(getApplicationContext());
+            img.setBackground(getDrawable(R.drawable.del));
+            final FrameLayout frame = new FrameLayout(getApplicationContext());
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 150);
+            LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(145,145);
+            LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(35, 35);
+            frame.setLayoutParams(layoutParams);
+            imageView.setLayoutParams(layoutParams1);
+            img.setLayoutParams(layoutParams2);
+            frame.addView(imageView);
+            frame.addView(img);
+            linearImmagini.addView(frame);
+            img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(Report.this);
@@ -337,8 +364,7 @@ public class Report extends AppCompatActivity{
                     alert.setPositiveButton("Coferma", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            linearImmagini.removeView(view);
-                            Toast.makeText(Report.this, "Foto eliminata con successo", Toast.LENGTH_SHORT).show();
+                            linearImmagini.removeView(frame);
                         }
                     });
                     alert.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
@@ -552,4 +578,5 @@ public class Report extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
